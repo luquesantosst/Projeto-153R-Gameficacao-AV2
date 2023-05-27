@@ -1,0 +1,24 @@
+#containerDashboard {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-around;
+    background-color: rgb(105, 105, 107);
+    position: absolute;
+    border-radius: 10px;
+    top: 50%;
+    left: 50%;
+    width: 900px;
+    height: 900px;
+    margin: -450px;
+    padding: 10px;
+}
+
+.chat {
+    border-radius: 11px;
+    background-color: rgb(242, 243, 243);
+}
+
+.GameButton {
+    font-size: 40px;
+}

@@ -58,14 +58,14 @@ function Dashboard() {
     const db = getFirestore(fireabaseApp)
     return (
         <>
-            <div id="container">
-                <input type="text" value={message} onChange={(event) => { setMessage(event.target.value) }} />
-                <button onClick={() => { handleAdd() }}>Enviar</button>
-                <div>
-                   Total Xp: {totalXp}
-                </div>
+            <div>
+                Total Xp: {totalXp}
+            </div>
+            <div id="containerDashboard">
+                <h1>Dashboard</h1>
                 {messages.map((message: any) => (
-                    <>
+                    <div className="chat">
+                    <>  
                         <div>
                             {message.email}
                         </div>
@@ -73,11 +73,17 @@ function Dashboard() {
                             {message.message}
                         </div>
                     </>
+                    </div>
                 ))}
 
+                <input type="text" value={message} onChange={(event) => { setMessage(event.target.value) }} />
+                <button onClick={() => { handleAdd() }}>Enviar</button>
 
-                <h1>Dashboard</h1>
-                <Link to="/Game">game</Link>
+                <Link to="/Game">
+                    <div className="GameButton">
+                    game
+                    </div> 
+                </Link>
                 <button onClick={() => signOut()} type="submit" className="btn btn-primary">Logout</button>
             </div>
 
