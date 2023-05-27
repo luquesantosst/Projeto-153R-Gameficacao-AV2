@@ -1,6 +1,6 @@
 import { Link, useResolvedPath } from 'react-router-dom'
 import './style.css'
-import Xp from '../../insideComponents/indexXp'
+import Xp from '../../insideComponents/Xp/indexXp'
 import Cards from '../../insideComponents/Cards/indexCards'
 import { useState } from 'react'
 
@@ -23,7 +23,8 @@ function game() {
     return  (
         <>
         <div id="container-topo">
-                {/* <Xp /> */}
+            <div className='title'> FlashCard Game</div>
+                <Xp total={10}/>
             </div>
             <div id="container-card">
                 {cards.map((card => <Cards content={card} />))}

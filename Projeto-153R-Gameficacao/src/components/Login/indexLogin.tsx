@@ -13,7 +13,7 @@ function Login() {
     }, [user])
 
     if (loading) {
-        return <div className="spinner-border text-dark" role="status">
+        return <div className="loading spinner-border text-dark" role="status">
         </div>
 
     }
@@ -29,10 +29,14 @@ function Login() {
                     <label htmlFor="exampleInputPassword1" className="form-label">Password</label>
                     <input type="password" className="form-control" id="exampleInputPassword1" value={password} onChange={handlePasswordChange} />
                 </div>
+                <div className="buttons">
                 <button onClick={() => signIn(email, password)} type="submit" className="btn btn-primary">Login</button>
+                <button type="submit" className="btn btn-primary">SignUp</button>
+                </div>
             </div>
         </div>
     )
 }
 
 export default Login
+

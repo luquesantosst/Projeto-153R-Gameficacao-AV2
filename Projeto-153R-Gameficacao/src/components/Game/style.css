@@ -1,0 +1,18 @@
+#container-topo{
+    background-color: #fdfafa;
+    box-shadow: 0 0 15px 15px rgba(99, 193, 255, 0.1);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+#container-topo .title {
+    flex:1;
+    font-size: 35px;
+
+}
+
+
+#container-card{
+
+}
