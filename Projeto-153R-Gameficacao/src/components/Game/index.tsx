@@ -1,13 +1,35 @@
-import { Link } from 'react-router-dom'
+import { Link, useResolvedPath } from 'react-router-dom'
 import './style.css'
+import Xp from '../../insideComponents/indexXp'
+import Cards from '../../insideComponents/Cards/indexCards'
+import { useState } from 'react'
 
 function game() {
-    return(
-            <div className="card">
-                <div className="title">cachorro</div>
-                <Link to='/dashboard'>dashboard</Link>
 
+    const [cards, useCards] = useState([
+        {
+            front:"Gato",
+            back:"Cat"
+        },
+        {
+            front:"Cachorro",
+            back:"dog"
+        },
+        {
+            front:"Vaca",
+            back:"Cow"
+        }
+    ])
+    return  (
+        <>
+        <div id="container-topo">
+                {/* <Xp /> */}
             </div>
+            <div id="container-card">
+                {cards.map((card => <Cards content={card} />))}
+            </div>
+        </>
+            
     )    
 }
 

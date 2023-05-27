@@ -10,7 +10,7 @@ import { UserProvider } from './context/User'
 function App() {
 
   return (
-    <div id="container">
+    <>
       <UserProvider>
       <BrowserRouter>
         <Routes>
@@ -24,11 +24,9 @@ function App() {
           <Route path="/" element={<Navigate to={"/Login"} />} />
         </Routes>
       </BrowserRouter>
-      {/* <Game/>
-      <Dashboard/>
-      <Login/> */}
+  
       </UserProvider>
-    </div>
+    </>
   )
 }
 

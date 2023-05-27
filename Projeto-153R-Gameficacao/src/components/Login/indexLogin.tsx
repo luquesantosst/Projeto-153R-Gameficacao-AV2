@@ -4,22 +4,22 @@ import { UserContext } from "../../context/User"
 import { Link, useNavigate } from "react-router-dom"
 function Login() {
 
-    const { signIn, email, password, loading, handleEmailChange,handlePasswordChange, user } = useContext(UserContext)
+    const { signIn, email, password, loading, handleEmailChange, handlePasswordChange, user } = useContext(UserContext)
 
     const navigate = useNavigate()
 
-    useEffect(()=>{
+    useEffect(() => {
         if (user) navigate("/dashboard")
-    },[user])
+    }, [user])
 
-    if(loading){
+    if (loading) {
         return <div className="spinner-border text-dark" role="status">
-      </div>
-      
+        </div>
+
     }
 
     return (
-        <div id={"container"}>
+        <div id={"containerLogin"}>
             <div className={"loginBox"}>
                 <div className="mb-3">
                     <label htmlFor="exampleInputEmail1" className="form-label">Email address</label>
@@ -29,7 +29,7 @@ function Login() {
                     <label htmlFor="exampleInputPassword1" className="form-label">Password</label>
                     <input type="password" className="form-control" id="exampleInputPassword1" value={password} onChange={handlePasswordChange} />
                 </div>
-                <button onClick={() => signIn(email,password)} type="submit" className="btn btn-primary">Login</button>
+                <button onClick={() => signIn(email, password)} type="submit" className="btn btn-primary">Login</button>
             </div>
         </div>
     )
