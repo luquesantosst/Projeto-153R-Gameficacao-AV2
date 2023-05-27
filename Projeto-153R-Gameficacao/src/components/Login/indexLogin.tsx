@@ -21,6 +21,7 @@ function Login() {
     return (
         <div id={"containerLogin"}>
             <div className={"loginBox"}>
+                <h5>Login</h5>
                 <div className="mb-3">
                     <label htmlFor="exampleInputEmail1" className="form-label">Email address</label>
                     <input type="email" className="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" value={email} onChange={handleEmailChange} />

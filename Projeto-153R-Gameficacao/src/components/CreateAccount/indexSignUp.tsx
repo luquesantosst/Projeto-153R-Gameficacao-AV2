@@ -23,6 +23,7 @@ function CreateAccount() {
     return (
         <div id={"containerSignUp"}>
             <div className={"SignUpBox"}>
+                <h5>Create Account</h5>
                 <div className="mb-3">
                     <label htmlFor="exampleInputEmail1" className="form-label">Email address</label>
                     <input type="email" className="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" value={email} onChange={handleEmailChange} />
@@ -32,6 +33,7 @@ function CreateAccount() {
                     <input type="password" className="form-control" id="exampleInputPassword1" value={password} onChange={handlePasswordChange} />
                 </div>
                 <div className="buttons">
+                    <Link to="/Login"><span>Voltar</span></Link>
                     <button onClick={() => signUp(email, password)} type="submit" className="btn btn-primary">SignUp</button>
                 </div>
             </div>
