@@ -1,12 +1,26 @@
-import { useState } from 'react'
+import { useState, useContext } from 'react'
 import './styleCards.css'
+import { UserContext } from '../../context/User'
+
+
+
 export default function Cards({ content }) {
+
+    const { incrementer, totalXp } = useContext(UserContext)
 
     const [isOpened, setIsOpened] = useState(false)
 
+    const clickPoint = () => {
+        setIsOpened(!isOpened)
+        if (!isOpened) {
+            incrementer(+ 10)
+        } else
+            incrementer(- 5)
+    }
+
     return (
-        <div className={isOpened ? "card card-opened" : "card"}
-            onClick={() => setIsOpened(!isOpened)}>
+        <div className={isOpened ? "card card-opened" : "card"} key={content.id}
+            onClick={() => clickPoint()}>
             <div className="content">
                 <div className="front">
                     {content.front}

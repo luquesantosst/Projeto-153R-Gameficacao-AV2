@@ -7,7 +7,7 @@ import { getFirestore, addDoc, collection, getDocs, onSnapshot, query } from 'fi
 
 function Dashboard() {
 
-    const { signOut, user } = useContext<any>(UserContext)
+    const { signOut, user, totalXp } = useContext<any>(UserContext)
     const [message, setMessage] = useState()
     const [messages, setMessages] = useState<any>([])
 
@@ -61,7 +61,9 @@ function Dashboard() {
             <div id="container">
                 <input type="text" value={message} onChange={(event) => { setMessage(event.target.value) }} />
                 <button onClick={() => { handleAdd() }}>Enviar</button>
-
+                <div>
+                   Total Xp: {totalXp}
+                </div>
                 {messages.map((message: any) => (
                     <>
                         <div>

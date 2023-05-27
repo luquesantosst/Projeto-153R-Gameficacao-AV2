@@ -69,10 +69,18 @@ const UserProvider = ({ children }) => {
         })
     }
 
+    const [totalXp, setTotalXp] = useState(0)
+
+    
+    const incrementer = (valor) => {
+        let xp = totalXp + valor 
+        setTotalXp(xp)
+    }
+
     const [loading, setLoading] = useState(true)
 
     return (
-        <UserContext.Provider value={{ LoginPermission, signIn, signOut, loading, email, password, handleEmailChange, handlePasswordChange, user, signUp, errorLogin }}>
+        <UserContext.Provider value={{ LoginPermission, signIn, signOut, loading, email, password, handleEmailChange, handlePasswordChange, user, signUp, errorLogin, totalXp, incrementer }}>
             {children}
         </UserContext.Provider>
 
