@@ -1,15 +1,17 @@
 import { useContext, useEffect, useState } from "react"
-import "./styleLogin.css"
+import './styleSignUp.css'
 import { UserContext } from "../../context/User"
 import { Link, useNavigate } from "react-router-dom"
-function Login() {
 
-    const { signIn, email, password, loading, handleEmailChange, handlePasswordChange, user, errorLogin } = useContext(UserContext)
+
+function CreateAccount() {
+
+    const { signUp, email, password, loading, handleEmailChange, handlePasswordChange, user } = useContext(UserContext)
 
     const navigate = useNavigate()
 
     useEffect(() => {
-        if (user) navigate("/dashboard")
+        if (user) navigate("/Login")
     }, [user])
 
     if (loading) {
@@ -19,8 +21,8 @@ function Login() {
     }
 
     return (
-        <div id={"containerLogin"}>
-            <div className={"loginBox"}>
+        <div id={"containerSignUp"}>
+            <div className={"SignUpBox"}>
                 <div className="mb-3">
                     <label htmlFor="exampleInputEmail1" className="form-label">Email address</label>
                     <input type="email" className="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" value={email} onChange={handleEmailChange} />
@@ -30,16 +32,11 @@ function Login() {
                     <input type="password" className="form-control" id="exampleInputPassword1" value={password} onChange={handlePasswordChange} />
                 </div>
                 <div className="buttons">
-                    <button onClick={() => signIn(email, password)} type="submit" className="btn btn-primary">Login</button>
-                    <Link to='/CreateAccount'> <span>Create your account</span></Link>
-                </div>
-                <div className="erroMensageLogin" style={{ display: errorLogin }}>
-                    Incorrect credentials!
+                    <button onClick={() => signUp(email, password)} type="submit" className="btn btn-primary">SignUp</button>
                 </div>
             </div>
         </div>
     )
 }
 
-export default Login
-
+export default CreateAccount

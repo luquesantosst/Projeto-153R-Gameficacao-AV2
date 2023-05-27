@@ -6,6 +6,7 @@ import Dashboard from './components/Dashboard/indexDashboard'
 import { Route, Routes, BrowserRouter, Navigate } from 'react-router-dom'
 import ProtectedRoutes from './components/ProtectedRoutes'
 import { UserProvider } from './context/User'
+import CreateAccount from './components/CreateAccount/indexSignUp'
 
 function App() {
 
@@ -15,6 +16,8 @@ function App() {
       <BrowserRouter>
         <Routes>
           <Route path='Login' element={<Login />} />
+          <Route path='CreateAccount' element={<CreateAccount />} />
+
 
           <Route element={<ProtectedRoutes />}>
             <Route path='Dashboard' element={<Dashboard />} />

@@ -4,7 +4,8 @@ import {
     getAuth,
     signInWithEmailAndPassword,
     signOut as SignOutFirebase,
-    onAuthStateChanged
+    onAuthStateChanged,
+    createUserWithEmailAndPassword
 } from 'firebase/auth';
 
 const UserContext = createContext({})
@@ -34,12 +35,11 @@ const UserProvider = ({ children }) => {
         setPassword(event.target.value);
     };
 
+    const [errorLogin, setErrorLogin] = useState("none")
 
-
-    const signIn = (email: string, password: string) => {
-        console.log(email, password)
+    const signUp = (email: string, password: string) => {
         setLoading(true)
-        signInWithEmailAndPassword(auth, email, password).then((userCredentials) => {
+        createUserWithEmailAndPassword(auth, email, password).then((userCredentials) => {
 
         }).catch((error) => {
             console.log("Credenciais Invalidas", error)
@@ -47,10 +47,21 @@ const UserProvider = ({ children }) => {
         })
     }
 
+    const signIn = (email: string, password: string) => {
+        setLoading(true)
+        signInWithEmailAndPassword(auth, email, password).then((userCredentials) => {
+
+        }).catch((error) => {
+            console.log("Credenciais Invalidas", error)
+            setErrorLogin("block")
+            setLoading(false)
+        })
+    }
+
     const signOut = () => {
-        console.log("tchau")
         SignOutFirebase(auth).then(() => {
             console.log("Deslogado com sucesso")
+            setErrorLogin("none")
             setLoading(false)
         }).catch((error) => {
             console.log("error", error)
@@ -61,7 +72,7 @@ const UserProvider = ({ children }) => {
     const [loading, setLoading] = useState(true)
 
     return (
-        <UserContext.Provider value={{ LoginPermission, signIn, signOut, loading, email, password, handleEmailChange, handlePasswordChange, user }}>
+        <UserContext.Provider value={{ LoginPermission, signIn, signOut, loading, email, password, handleEmailChange, handlePasswordChange, user, signUp, errorLogin }}>
             {children}
         </UserContext.Provider>
 
