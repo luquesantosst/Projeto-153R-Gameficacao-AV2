@@ -4,7 +4,7 @@ import { UserContext } from "../context/User"
 
 function ProtectedRoutes() {
 
-    const { LoginPermission } = useContext(UserContext)
-    return LoginPermission ? <Outlet /> : <Navigate to='/Login'/>
+    const { LoginPermission, user } = useContext(UserContext)
+    return user ? <Outlet /> : <Navigate to='/Login'/>
 }
 export default ProtectedRoutes
