@@ -2,11 +2,21 @@ import { useState, useContext } from 'react'
 import './styleCards.css'
 import { UserContext } from '../../context/User'
 
+interface Content {
+    front: string,
+    back: string
+    id: any
+}
 
 
-export default function Cards({ content }) {
+interface Icards {
+    content : Content
 
-    const { incrementer, totalXp } = useContext(UserContext)
+}
+
+export default function Cards({ content }: Icards ) {
+
+    const { incrementer }: any = useContext(UserContext)
 
     const [isOpened, setIsOpened] = useState(false)
 

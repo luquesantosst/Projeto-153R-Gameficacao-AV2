@@ -1,20 +1,21 @@
-import { Link, useResolvedPath } from 'react-router-dom'
 import './style.css'
 import Xp from '../../insideComponents/Xp/indexXp'
 import Cards from '../../insideComponents/Cards/indexCards'
 import { useState, useContext, useEffect } from 'react'
 import { UserContext } from "../../context/User"
 import fireabaseApp from "../../services/firebase"
-import { getFirestore, addDoc, collection, getDocs, onSnapshot, query } from 'firebase/firestore'
+import { getFirestore, collection, onSnapshot, query } from 'firebase/firestore'
 
 function game() {
+
+
 
     const { } = useContext(UserContext)
 
 
     // const [totalXp, setTotalXp] = useState(10)
 
-    const [cards, setCards] = useState([])
+    const [cards, setCards] = useState<any>([])
 
     useEffect(() => {
 
@@ -22,7 +23,7 @@ function game() {
 
         onSnapshot(q, (querySnapshot) => {
             const aux: any = []
-            querySnapshot.forEach((doc: any) => {
+            querySnapshot.forEach((doc) => {
                 aux.push({
                     id: doc.id,
                     ...doc.data()
@@ -41,7 +42,7 @@ function game() {
                 <Xp />
             </div>
             <div id="container-card">
-                {cards.map((card => <Cards content={card} />))}
+                {cards.map((card: any) => <Cards content={card} />)}
             </div>
         </>
 

@@ -3,12 +3,12 @@ import './styleDashboard.css'
 import { useContext, useEffect, useState } from "react"
 import { UserContext } from "../../context/User"
 import fireabaseApp from "../../services/firebase"
-import { getFirestore, addDoc, collection, getDocs, onSnapshot, query } from 'firebase/firestore'
+import { getFirestore, addDoc, collection, onSnapshot, query } from 'firebase/firestore'
 
 function Dashboard() {
 
     const { signOut, user, totalXp } = useContext<any>(UserContext)
-    const [message, setMessage] = useState()
+    const [message, setMessage] = useState<any>()
     const [messages, setMessages] = useState<any>([])
 
     useEffect(() => {
@@ -49,7 +49,7 @@ function Dashboard() {
             message: message,
             email: user.email
         }
-        const addDocReturn = await addDoc(collection(db, "messages"), message_json)
+        await addDoc(collection(db, "messages"), message_json)
 
         // setMessages([...messages, message_json])
 

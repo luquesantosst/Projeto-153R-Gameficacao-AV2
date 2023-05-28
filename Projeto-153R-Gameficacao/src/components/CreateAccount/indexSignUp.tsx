@@ -1,4 +1,4 @@
-import { useContext, useEffect, useState } from "react"
+import { useContext, useEffect } from "react"
 import './styleSignUp.css'
 import { UserContext } from "../../context/User"
 import { Link, useNavigate } from "react-router-dom"
@@ -6,7 +6,7 @@ import { Link, useNavigate } from "react-router-dom"
 
 function CreateAccount() {
 
-    const { signUp, email, password, loading, handleEmailChange, handlePasswordChange, user } = useContext(UserContext)
+    const { signUp, email, password, loading, handleEmailChange, handlePasswordChange, user } = useContext<any>(UserContext)
 
     const navigate = useNavigate()
 

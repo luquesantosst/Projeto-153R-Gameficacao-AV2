@@ -10,13 +10,17 @@ import {
 
 const UserContext = createContext({})
 
-const UserProvider = ({ children }) => {
+interface IUserProvider {
+    children: React.ReactNode
+}
+
+const UserProvider :React.FC<IUserProvider> = ({ children }) => {
 
     useEffect(() => {
         return onAuthStateChanged(auth, listenAuth)
     }, [])
 
-    const auth = getAuth()
+    const auth: any = getAuth()
     const listenAuth = (userState: any) => {
         console.log("ListenAuth", userState)
         setUser(auth.currentUser)
@@ -28,10 +32,10 @@ const UserProvider = ({ children }) => {
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
 
-    const handleEmailChange = (event) => {
+    const handleEmailChange = (event: any) => {
         setEmail(event.target.value);
     };
-    const handlePasswordChange = (event) => {
+    const handlePasswordChange = (event: any) => {
         setPassword(event.target.value);
     };
 
@@ -39,7 +43,7 @@ const UserProvider = ({ children }) => {
 
     const signUp = (email: string, password: string) => {
         setLoading(true)
-        createUserWithEmailAndPassword(auth, email, password).then((userCredentials) => {
+        createUserWithEmailAndPassword(auth, email, password).then(() => {
 
         }).catch((error) => {
             console.log("Credenciais Invalidas", error)
@@ -49,7 +53,7 @@ const UserProvider = ({ children }) => {
 
     const signIn = (email: string, password: string) => {
         setLoading(true)
-        signInWithEmailAndPassword(auth, email, password).then((userCredentials) => {
+        signInWithEmailAndPassword(auth, email, password).then(() => {
 
         }).catch((error) => {
             console.log("Credenciais Invalidas", error)
@@ -72,7 +76,7 @@ const UserProvider = ({ children }) => {
     const [totalXp, setTotalXp] = useState(0)
 
     
-    const incrementer = (valor) => {
+    const incrementer = (valor: any) => {
         let xp = totalXp + valor 
         setTotalXp(xp)
     }
@@ -80,7 +84,7 @@ const UserProvider = ({ children }) => {
     const [loading, setLoading] = useState(true)
 
     return (
-        <UserContext.Provider value={{ LoginPermission, signIn, signOut, loading, email, password, handleEmailChange, handlePasswordChange, user, signUp, errorLogin, totalXp, incrementer }}>
+        <UserContext.Provider value={{ setLoginPermission, LoginPermission, signIn, signOut, loading, email, password, handleEmailChange, handlePasswordChange, user, signUp, errorLogin, totalXp, incrementer }}>
             {children}
         </UserContext.Provider>
 

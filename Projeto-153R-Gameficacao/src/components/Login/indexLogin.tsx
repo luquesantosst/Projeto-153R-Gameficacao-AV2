@@ -1,10 +1,10 @@
-import { useContext, useEffect, useState } from "react"
+import { useContext, useEffect } from "react"
 import "./styleLogin.css"
 import { UserContext } from "../../context/User"
 import { Link, useNavigate } from "react-router-dom"
 function Login() {
 
-    const { signIn, email, password, loading, handleEmailChange, handlePasswordChange, user, errorLogin } = useContext(UserContext)
+    const { signIn, email, password, loading, handleEmailChange, handlePasswordChange, user, errorLogin } = useContext<any>(UserContext)
 
     const navigate = useNavigate()
 
